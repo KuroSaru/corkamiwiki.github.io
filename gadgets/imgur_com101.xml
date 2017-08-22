@@ -3,7 +3,7 @@
   <ModulePrefs title="imgur_com101" />
   <Content type="html">
     <![CDATA[
-<iframe class="imgur-album" width="100%" height="550" frameborder="0" src="https://imgur.com/a/PbN8H/embed"></iframe>
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/PbN8H"><a href="//imgur.com/PbN8H">101 posters</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
     ]]>
   </Content>
 </Module>
