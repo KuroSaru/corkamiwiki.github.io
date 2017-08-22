@@ -72,7 +72,7 @@ a more extreme PE can rely on even less elements:
 
 as most elements are actually unused, they can be used for other reasons.
   * `hdrcode` contains a maximum of executed code in its header, and calculate fibonacci numbers via FPU.
-> > ![//pics/PE_hdrcode.png](//pics/PE_hdrcode.png)
+> > ![/pics/PE_hdrcode.png](/pics/PE_hdrcode.png)
   * TBC's 1kb Traceless demo also contains an [executable header](https://corkami.googlecode.com/svn/trunk/asm/misc/traceless.bat)
 > > <a href='http://www.youtube.com/watch?feature=player_embedded&v=EDc0qmDrjtM' target='_blank'><img src='http://img.youtube.com/vi/EDc0qmDrjtM/0.jpg' width='425' height=344 /></a>
 
@@ -132,7 +132,7 @@ as most elements are actually unused, they can be used for other reasons.
   * starts at offset 0
   * most values only matters to the DOS stub.
     * `compiled` contains a DOS stub
-> > > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=//pics/wink/PE\_dosstub.swf up\_FlashHeight=157 up\_FlashWidth=380 up\_ContainerCol="#d1dae3" height=157 width=380 title="" border=0/>
+> > > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=/pics/wink/PE\_dosstub.swf up\_FlashHeight=157 up\_FlashWidth=380 up\_ContainerCol="#d1dae3" height=157 width=380 title="" border=0/>
 ```
    DOS_HEADER:
 ...
@@ -156,7 +156,7 @@ dos_msg
   * While it's usually just printing a string and terminating, the dos stub can do everything: open, modify files, and even executes PE.
 
 ### exe2pe
-<wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=//pics/wink/PE\_exe2pe.swf up\_FlashHeight=276 up\_FlashWidth=747 up\_ContainerCol="#d1dae3" height=276 width=747 title="" border=0/>
+<wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=/pics/wink/PE\_exe2pe.swf up\_FlashHeight=276 up\_FlashWidth=747 up\_ContainerCol="#d1dae3" height=276 width=747 title="" border=0/>
 
 this file is a broken 32b PE that is fixed (on disk), then launched by its (16b) dos stub. What's the most surprising is that a 16b process can launch the 32b part of a PE: if you were in a DOS environment, the 16b stub would be executed.
 
@@ -166,7 +166,7 @@ this file is a broken 32b PE that is fixed (on disk), then launched by its (16b)
   * it can be `ZM` on an (non-PE) EXE. These executables still work under XP via ntvdm.
     * `dosZMXP` is a non-PE EXE with a ZM signature
 
-> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=//pics/wink/PE\_doszmxp.swf up\_FlashHeight=208 up\_FlashWidth=207 up\_ContainerCol="#d1dae3" height=208 width=207 title="" border=0/>
+> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=/pics/wink/PE\_doszmxp.swf up\_FlashHeight=208 up\_FlashWidth=207 up\_ContainerCol="#d1dae3" height=208 width=207 title="" border=0/>
 ```
 at IMAGE_DOS_HEADER.e_magic, db 'ZM'
 ```
@@ -223,12 +223,12 @@ align 16, db 0
   * can be null with low alignment PEs
     * `nosection*.exe`, `tiny*.exe`
     * and in this case, the values are just checked but not really used (under XP)
-> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=//pics/wink/PE\_maxsecxp.swf up\_FlashHeight=234 up\_FlashWidth=509 up\_ContainerCol="#d1dae3" height=234 width=509 title="" border=0/>
+> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=/pics/wink/PE\_maxsecxp.swf up\_FlashHeight=234 up\_FlashWidth=509 up\_ContainerCol="#d1dae3" height=234 width=509 title="" border=0/>
   * can be up to 96 under XP:
     * `96emptysections.exe` (all identical), `96workingsections.exe` (all physically different), `maxsecXP.exe` (garbage table)
   * can be up to 65535 under Vista and later:
     * `65535sects.exe` has 65535 sections, that are all virtually executed.
-> > > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=//pics/wink/PE\_65535.swf up\_FlashHeight=417 up\_FlashWidth=510 up\_ContainerCol="#d1dae3" height=417 width=510 title="" border=0/>
+> > > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=/pics/wink/PE\_65535.swf up\_FlashHeight=417 up\_FlashWidth=510 up\_ContainerCol="#d1dae3" height=417 width=510 title="" border=0/>
 
 ### TimeDateStamp
   * has a different meaning whether it's a Borland or a Microsoft compiler
@@ -242,7 +242,7 @@ no importance whatsoever for the loader
 
 > Thus, it can be null (the section table will overlap the Optional Header, or can be null when no sections are present), or bigger than the file (the section table will be in virtual space, full of zeroes), but can't be negative.
     * `nullSOH-XP` is a PE with a null SizeOfHeaders. the section table is thus overlapping the optional header. (XP only).
-> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=//pics/wink/PE\_nullSOH-xp.swf up\_FlashHeight=211 up\_FlashWidth=511 up\_ContainerCol="#d1dae3" height=211 width=511 title="" border=0/>
+> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=/pics/wink/PE\_nullSOH-xp.swf up\_FlashHeight=211 up\_FlashWidth=511 up\_ContainerCol="#d1dae3" height=211 width=511 title="" border=0/>
 ```
 ...
 SECTIONALIGN equ 4
@@ -256,7 +256,7 @@ istruc IMAGE_OPTIONAL_HEADER32
 ...
 ```
     * `virtsectblXP` is a PE with its 82 sections of empty information, with its section table in virtual space.
-> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=//pics/wink/PE\_virtsectblxp.swf up\_FlashHeight=273 up\_FlashWidth=548 up\_ContainerCol="#d1dae3" height=273 width=548 title="" border=0/>
+> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=/pics/wink/PE\_virtsectblxp.swf up\_FlashHeight=273 up\_FlashWidth=548 up\_ContainerCol="#d1dae3" height=273 width=548 title="" border=0/>
 ```
 ...
     at IMAGE_FILE_HEADER.NumberOfSections,      dw 82 ; 0 <= NumberOfSections <= 82 (varies with SizeOfOptionalHeader)
@@ -272,7 +272,7 @@ SIZEOFOPTIONALHEADER equ 10h + $ - IMAGEBASE ; bigger than the file itself !
   * 0x2000 / IMAGE\_FILE\_DLL is required in for DLLs, in most cases, except:
     * if it's not set, the DLLMain will not be called, but the DLL is loaded and exports are usable. if it was dynamically called, the imports of the DLL won't be resolved
       * `dllnomain.dll` is staticly-loaded, has no valid DllMain, but its export is executed.
-> > > ![//pics/PE_dllnomain.png](//pics/PE_dllnomain.png)
+> > > ![/pics/PE_dllnomain.png](/pics/PE_dllnomain.png)
 ```
 ...
     at IMAGE_FILE_HEADER.Characteristics,       dw IMAGE_FILE_EXECUTABLE_IMAGE
@@ -283,7 +283,7 @@ SIZEOFOPTIONALHEADER equ 10h + $ - IMAGEBASE ; bigger than the file itself !
       * `dllnomain2.dll` is an import-less dynamically loaded dll with no DllMain
     * IMAGE\_FILE\_DLL should NOT be set for a non-DLL PE.
       * `maxvalues.exe` has all its characteristics set excepted IMAGE\_FILE\_DLL.
-> > > ![//pics/PE_maxvals2.png](//pics/PE_maxvals2.png)
+> > > ![/pics/PE_maxvals2.png](/pics/PE_maxvals2.png)
   * 0x100 / IMAGE\_FILE\_32BIT\_MACHINE is **not** required, even in 32b.
     * it can be set for a 64b PE32+, and causes no problem.
   * nothing else is required
@@ -310,7 +310,7 @@ no particular importance whatsoever
   * can be null
     * `nullEP.exe` has a null EntryPoint: Execution starts at ImageBase, executing 'MZ' as 'dec ebp/pop edx'
 
-> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=//pics/wink/PE\_nullep.swf up\_FlashHeight=247 up\_FlashWidth=557 up\_ContainerCol="#d1dae3" height=247 width=557 title="" border=0/>
+> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=/pics/wink/PE\_nullep.swf up\_FlashHeight=247 up\_FlashWidth=557 up\_ContainerCol="#d1dae3" height=247 width=557 title="" border=0/>
 ```
 EntryPoint:
 istruc IMAGE_DOS_HEADER
@@ -327,7 +327,7 @@ istruc IMAGE_DOS_HEADER
   * can be absent/bypassed (see TLS)
   * can be negative
     * `dllextep-ld` has an external EntryPoint that is located in `dllextep.dll` (a dll with no relocations)
-> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=//pics/wink/PE\_dllextep.swf up\_FlashHeight=238 up\_FlashWidth=608 up\_ContainerCol="#d1dae3" height=238 width=608 title="" border=0/>
+> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=/pics/wink/PE\_dllextep.swf up\_FlashHeight=238 up\_FlashWidth=608 up\_ContainerCol="#d1dae3" height=238 width=608 title="" border=0/>
       * `dllext-ep`:
 ```
 IMAGEBASE equ 1000000h
@@ -340,7 +340,7 @@ IMAGEBASE equ 33000000h
 ```
   * can be virtual
     * `virtEP.exe` code starts one byte before the start of the section. This virtual space will be full of 0 on loading, so the first opcode will be made from one virtual byte and one physical byte.
-> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=//pics/wink/PE\_virtEP.swf up\_FlashHeight=268 up\_FlashWidth=358 up\_ContainerCol="#d1dae3" height=268 width=358 title="" border=0/>
+> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=/pics/wink/PE\_virtEP.swf up\_FlashHeight=268 up\_FlashWidth=358 up\_ContainerCol="#d1dae3" height=268 width=358 title="" border=0/>
 ```
     at IMAGE_OPTIONAL_HEADER32.AddressOfEntryPoint,       dd EntryPoint - IMAGEBASE - 1 ; -1 to start in virtual space
 ...
@@ -351,11 +351,11 @@ EntryPoint:
 ...
 ```
     * `tls_virtEP` has an 'invalid' EntryPoint, but the TLS allocates the memory space and generates some codes, so the EntryPoint works fine.
-> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=//pics/wink/PE\_tlsvirtEP.swf up\_FlashHeight=284 up\_FlashWidth=532 up\_ContainerCol="#d1dae3" height=284 width=532 title="" border=0/>
+> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=/pics/wink/PE\_tlsvirtEP.swf up\_FlashHeight=284 up\_FlashWidth=532 up\_ContainerCol="#d1dae3" height=284 width=532 title="" border=0/>
   * is not used when a staticly loaded DLL doesn't have IMAGE\_FILE\_DLL set as IMAGE\_FILE\_HEADER.Characteristics
   * when a static DLL's DllMain is executed, the context of the not-executed-yet PE is available via lpvReserved. Thus, a static DLL can freely modify the value of the future EntryPoint to be executed
     * `ctxt` and `ctxt-ld` are an example of such context modification via lpvReserved.
-> > > ![//pics/PE_lpvreserved.png](//pics/PE_lpvreserved.png)
+> > > ![/pics/PE_lpvreserved.png](/pics/PE_lpvreserved.png)
 
 ##### BaseOfCode/BaseOfData
 no particular importance whatsoever
@@ -364,23 +364,23 @@ no particular importance whatsoever
   * is a multiple of 10000h
   * can be null, under XP. In this case, the binary will be relocated to 10000h
     * `ibnullXP.exe` has a null imagebase, and relocations
-> > > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=//pics/wink/PE\_ibnullxp.swf up\_FlashHeight=155 up\_FlashWidth=380 up\_ContainerCol="#d1dae3" height=155 width=380 title="" border=0/>
+> > > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=/pics/wink/PE\_ibnullxp.swf up\_FlashHeight=155 up\_FlashWidth=380 up\_ContainerCol="#d1dae3" height=155 width=380 title="" border=0/>
   * can be any value as long as `ImageBase + 'SizeOfImage' < 80000000h`
     * `bigib.exe` has an ImageBase of 7ffd0000h, and no relocations
-> > > ![//pics/PE_bigib.png](//pics/PE_bigib.png)
+> > > ![/pics/PE_bigib.png](/pics/PE_bigib.png)
   * ImageBase can't collide with ntdll.dll or kernel32, even if relocations are present (in the loaded PE), because they can't be relocated.
     * in this case, it gives a unique error message, under Windows 7: `the subsystem needed to support the image type is not present.` even if it has nothing to do with the subsystem.
   * if the ImageBase is bigger than that, the binary will be relocated to 10000h
     * `ibkernel.exe` has an ImageBase of 0FFFF0000h and relocations.
 
-> > ![//pics/PE_ibkernel.png](//pics/PE_ibkernel.png)
+> > ![/pics/PE_ibkernel.png](/pics/PE_ibkernel.png)
 
 ### SectionAlignment/FileAlignment
   * both are power of 2 (4, 8, 16...)
   * standard mode: `200 <= FileAlignment <= SectionAlignment` and `1000 <= SectionAlignment`
     * `normal.exe` has aligments of 1000/200
     * `bigalign.exe` has alignments of 20000000/10000
-> > ![//pics/PE_bigalign.png](//pics/PE_bigalign.png)
+> > ![/pics/PE_bigalign.png](/pics/PE_bigalign.png)
   * in low alignment: `1 <= FileAlignment = SectionAlignment <= 800`
     * all `nosection*.exe` have alignments of 1/1
 
@@ -429,7 +429,7 @@ ID equ 3 ; [0;3]
 ```
 
 
-> ![//pics/PE_winver.png](//pics/PE_winver.png)
+> ![/pics/PE_winver.png](/pics/PE_winver.png)
 
 ### SizeOfImage
   * normally equal the total virtual size of all sections + headers
@@ -451,7 +451,7 @@ From a technical perspective, drivers and gui/console PEs are identical, except 
   * a CONSOLE PE is exactly like a GUI PE except that it comes with a pre-attached console.
 
   * `multiss` is a multi subsystem PE that will work correctly under all 3 subsystems, and display a message.
-> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=//pics/wink/PE\_multiss.swf up\_FlashHeight=245 up\_FlashWidth=397 up\_ContainerCol="#d1dae3" height=245 width=397 title="" border=0/>
+> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=/pics/wink/PE\_multiss.swf up\_FlashHeight=245 up\_FlashWidth=397 up\_ContainerCol="#d1dae3" height=245 width=397 title="" border=0/>
     1. determines the level of execution by checking CS
     1. resolve NTOSKRNL/KERNEL32 imports manually (by checksum, as it can't have any static import)
   * in Dlls, Subsystem is ignored - it can have any value.
@@ -478,12 +478,12 @@ From a technical perspective, drivers and gui/console PEs are identical, except 
 ### NumberOfRvaAndSizes
   * rounded down to 16 if bigger
     * `maxvals` has a maximum of PE structures set to FF, including its NumberOfRvaAndSizes which is set to FFFF
-> > ![//pics/PE_maxvals.png](//pics/PE_maxvals.png)
+> > ![/pics/PE_maxvals.png](/pics/PE_maxvals.png)
 
   * can be 0
     * `no_dd` has no data directory (see `imports`)
   * .Net loaders ignores this value, even if it requires relocations and a COM data directory, and will parse them. Thus, a .Net PE can work with a NumberOfRvaAndSizes of 2.
-> > ![//pics/PE_tinynet_2dd.png](//pics/PE_tinynet_2dd.png)
+> > ![/pics/PE_tinynet_2dd.png](/pics/PE_tinynet_2dd.png)
 
 ## data directories
 
@@ -525,7 +525,7 @@ a__exp__Export db 'export', 0
 ```
   * the Export Name is not necessary, and can be anything.
     * `dllweirdexp.dll` is correctly exported, with a corrupted Export Name
-> > ![//pics/PE_dllweirdexp.png](//pics/PE_dllweirdexp.png)
+> > ![/pics/PE_dllweirdexp.png](/pics/PE_dllweirdexp.png)
 ```
 Exports_Directory:
 ...
@@ -555,16 +555,16 @@ address_of_names:
 ```
   * export names can have any value (even null or more than 65536 characters long, with unprintable characters), just null terminated.
     * `dllemptyexp-ld.exe` loads `dllemptyexp.dll` with a null export
-> > > ![//pics/PE_dllemptyexp.png](//pics/PE_dllemptyexp.png)
+> > > ![/pics/PE_dllemptyexp.png](/pics/PE_dllemptyexp.png)
     * `dllweirdexp-ld.exe` loads `dllweirdexp.dll` with a 131102-long non-Ascii export.
   * an .EXE can have exports (no need of relocation nor DLL flag), and can use them normally
     * `ownexports.exe` uses its own exports
     * or they can be not used for execution, but for documenting the internal code
       * `PE_exports_doc` has internal exports used as address symbols
-> > > > ![//pics/PE_exports_doc.png](//pics/PE_exports_doc.png)
+> > > > ![/pics/PE_exports_doc.png](/pics/PE_exports_doc.png)
     * or they can have external or virtual addresses (but no address of 0, (un?)surprisingly)
       * `ownexports2` has a -1 export, to which it jumps (after adding 1). It also has an export in virtual space, which is executed.
-> > > > ![//pics/PE_virtual_exports.gif](//pics/PE_virtual_exports.gif)
+> > > > ![/pics/PE_virtual_exports.gif](/pics/PE_virtual_exports.gif)
   * exports at fixed value can be used to encode data, when their values are filled in the Import Address Table (their actual value doesn't matter as long as they are not executed, it's just a copied dword)
     * `exportsdata.exe`'s code is stored as dodgy exports RVAs, and is restored when imports are resolved
 ```
@@ -627,7 +627,7 @@ EXPORTS_SIZE equ $ - Exports_Directory
   * exports can also forward each other and create loops
     * `dllfwloop.dll` forwards its own imports until the right API is called.
 
-> ![//pics/PE_dllfwloop.png](//pics/PE_dllfwloop.png)
+> ![/pics/PE_dllfwloop.png](/pics/PE_dllfwloop.png)
 ```
 ...
 address_of_functions:
@@ -721,7 +721,7 @@ kernel32.dll_DESCRIPTOR:
 ```
     * because it can be null, it can be put in virtual space, like the next 2 dwords (timestamp, forwarderchain)
       * `imports_virtdesc` has an import descriptor starting in virtual space over its 3 first dwords
-> > > > ![//pics/PE_imports_virtdesc.png](//pics/PE_imports_virtdesc.png)
+> > > > ![/pics/PE_imports_virtdesc.png](/pics/PE_imports_virtdesc.png)
   * if the Import Lookup Table is present, then it also determins the length of the Import Address Table, as they are parsed in parallel. In this case, the Import Address Table doesn't have to be null-terminated.
     * `dllmaxvals` has a non null-terminated IAT but a null-terminated ILT
   * if the IAT is linked in the descriptor but empty, then the DLL is not loaded, and the file is loaded even with an invalid dll name - the descriptor is skipped.
@@ -750,7 +750,7 @@ dd msvcrt.dll_iat - IMAGEBASE
     * `imports_apimsW7` imports ExitProcess via `API-MS-Win-Core-Localization-L1-1-0.dll` which is redirected during loading to `kernel32.dll`
 
 
-> ![//pics/PE_imports_apimsw7.png](//pics/PE_imports_apimsw7.png)
+> ![/pics/PE_imports_apimsw7.png](/pics/PE_imports_apimsw7.png)
   * as most fields of a descriptor are not necessary, it's possible to squeeze an overlapping IAT in it.
     * `imports_iatindesc.exe` has IATs in descriptors
 ```
@@ -775,7 +775,7 @@ Import_Descriptor:
 ```
 
   * `imports_tiny` combines a lot of these techniques with ordinals, to make a working imports structure as small as possible (40 bytes for 2 imports from 2 dlls)
-> ![//pics/PE_imports_tiny.png](//pics/PE_imports_tiny.png)
+> ![/pics/PE_imports_tiny.png](/pics/PE_imports_tiny.png)
 ```
   Import_Descriptor:
 ;kernel32.dll_DESCRIPTOR:
@@ -804,7 +804,7 @@ align 4, db 0 ; <= imports terminator NULL
   * imports' Data Directory is not required to load imports: by locating kernel32 manually then parsing its exports manually, it's possible to resolve LoadLibraryA, then it's possible to manually load any DLL and resolve any of its exports (manually or via GetProcAddress).
     * `no_dd` has no data directory, and loads its imports manually.
 
-> ![//pics/PE_no_dd.png](//pics/PE_no_dd.png)
+> ![/pics/PE_no_dd.png](/pics/PE_no_dd.png)
 
   * .Net requires an import to `mscoree.dll._CoreExeMain`, and an import size to be at least 0x28.
 > > It doesn't accept to import to `mscoree` (without extension).
@@ -880,7 +880,7 @@ resource_directory_loop:
 
   * Names and Types of a resource can be used:
     * immediate integers (aka IDs) - like `resource.exe`
-> > ![//pics/PE_resources.png](//pics/PE_resources.png)
+> > ![/pics/PE_resources.png](/pics/PE_resources.png)
 ```
 SOME_TYPE equ 315h
 SOME_NAME equ 7354h
@@ -936,7 +936,7 @@ alrestype dw 4, "T", "Y", "P", "E", 0
 ```
   * the resource structures are relative to the start of the Data Directory, but the resource data can be anywhere in the file (RVA)
     * `reshdr.exe` has its resource data in the PE header
-> > ![//pics/PE_reshdr.png](//pics/PE_reshdr.png)
+> > ![/pics/PE_reshdr.png](/pics/PE_reshdr.png)
 ```
 at IMAGE_DOS_HEADER.e_magic, db 'MZ'
 at IMAGE_DOS_HEADER.e_lfanew, dd NT_Signature - IMAGEBASE
@@ -947,7 +947,7 @@ RESOURCE_SIZE equ $ - resource_data
 ```
   * resource strings have their own awkward format, in which 16 strings are stored in each block, and a null string is equivalent to no string, as all strings of the same block are stored consecutively as `<length16><string>`.
     * `resource_string` stores and access its message via resource string
-> > > ![//pics/PE_resource_string.png](//pics/PE_resource_string.png)
+> > > ![/pics/PE_resource_string.png](/pics/PE_resource_string.png)
 
 #### Version information
   * version information is a resource of type `RT_VERSION` 0x10 (16)
@@ -1050,11 +1050,11 @@ RESOURCE_SIZE equ $ - resource_data
 ### exception
   * used by 64b binaries for structured exception handling.
     * `exceptions` is a minimalist 64b PE that use exceptions.
-> > > ![//pics/PE_exceptions.png](//pics/PE_exceptions.png)
+> > > ![/pics/PE_exceptions.png](/pics/PE_exceptions.png)
 
   * the OS relies on the DataDirectory itself in memory.
     * `seh_change64` alterates the handler in memory, which is taken into account by the OS.
-> > > ![//pics/PE_seh_change64.png](//pics/PE_seh_change64.png)
+> > > ![/pics/PE_seh_change64.png](/pics/PE_seh_change64.png)
 
 ##### security
   * defines the offset and size of the digital certificate blob (as it can be appended **after** appended data itself).
@@ -1067,7 +1067,7 @@ RESOURCE_SIZE equ $ - resource_data
   * relocations are not used (even with corrupted ones) if the PE can be loaded at the expected address.
     * `fakerelocs.exe` contains fake unused relocations:
 
-> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=//pics/wink/PE\_fakerelocs.swf up\_FlashHeight=289 up\_FlashWidth=331 up\_ContainerCol="#d1dae3" height=289 width=331 title="" border=0/>
+> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=/pics/wink/PE\_fakerelocs.swf up\_FlashHeight=289 up\_FlashWidth=331 up\_ContainerCol="#d1dae3" height=289 width=331 title="" border=0/>
 ```
     Directory_Entry_Basereloc:
     ...
@@ -1102,7 +1102,7 @@ DIRECTORY_ENTRY_BASERELOC_SIZE  equ $ - Directory_Entry_Basereloc
 
   * TLS structures and callbacks have to be relocated as well
     * `tls_reloc.exe` has a relocated TLS:
-> > ![//pics/PE_tls_reloc.png](//pics/PE_tls_reloc.png)
+> > ![/pics/PE_tls_reloc.png](/pics/PE_tls_reloc.png)
 ```
     ...
     reloc40:
@@ -1126,7 +1126,7 @@ DIRECTORY_ENTRY_BASERELOC_SIZE  equ $ - Directory_Entry_Basereloc
   * IMAGE\_REL\_BASED\_HIGH3ADJ (type 11) was only supported until Windows 2000.
   * Other sort of relocations such as Mips and 64 bits are still supported by Windows 7, even if the PE specifies an x86 CPU.
     * `reloccrypt.exe` uses MIPS relocations (thus, involving masking and shifting):
-> > ![//pics/PE_reloccrypt.png](//pics/PE_reloccrypt.png)
+> > ![/pics/PE_reloccrypt.png](/pics/PE_reloccrypt.png)
 ```
 ...
 block_start:
@@ -1185,7 +1185,7 @@ cryptblock crypt168, 068h
     * on 64b, code can be RIP-relative, which removes the need from relocations altogether.
       * some system files such as `TDI.SYS` still have a relocation Data directory, but with no relocation block inside.
       * `ibknoreloc64.exe` has a kernel-range ImageBase, which implies relocation will happen, but uses only RIP-relative code.
-> > > > ![//pics/PE_ibknoreloc64.png](//pics/PE_ibknoreloc64.png)
+> > > > ![/pics/PE_ibknoreloc64.png](/pics/PE_ibknoreloc64.png)
 ```
 IMAGEBASE equ 0fffffffffff0000h
 ...
@@ -1195,7 +1195,7 @@ call [rel __imp__printf]
     * if the file knows where it will be relocated, it can apply its relocation manually in advance. The code will look wrong on disk, but ok in memory.
       * `ibkmanual.exe` uses such a technique of pre-relocated code
 
-> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=//pics/wink/PE\_ibkmanual.swf up\_FlashHeight=151 up\_FlashWidth=464 up\_ContainerCol="#d1dae3" height=151 width=464 title="" border=0/>
+> > <wiki:gadget url=https://corkami.googlecode.com/svn/wiki/gadgets/flash.xml up\_File=/pics/wink/PE\_ibkmanual.swf up\_FlashHeight=151 up\_FlashWidth=464 up\_ContainerCol="#d1dae3" height=151 width=464 title="" border=0/>
 ```
     IMAGEBASE equ 0FFFF0000h
     ...
@@ -1205,7 +1205,7 @@ call [rel __imp__printf]
 ```
     * applying manually an extra relocations on the ImageBase field itself doesn't change the memory mapping, as the used value was read from disk, and relocations are done in memory. However, once the PE is mapped, relocations are performed, altering the ImageBase in memory, and thus influencing the value of the EntryPoint (for it to work, a writeable header is required, thus low alignments)
       * `ibreloc.exe` is a low alignment PE with a altered EntryPoint and an extra relocation on the ImageBase field.
-> > > ![//pics/PE_ibreloc.png](//pics/PE_ibreloc.png)
+> > > ![/pics/PE_ibreloc.png](/pics/PE_ibreloc.png)
 ```
 ...
 IMAGEBASE equ 0FFFF0000h
@@ -1227,9 +1227,9 @@ BASE_RELOC_SIZE_OF_BLOCK1 equ $ - block_start1
   * applying a relocation on `e_lfanew` alters the remaining part of the loading process: under Vista and later, the remaining DataDirectories such as imports are parsed after relocations are processed. If e\_lfanew is relocated, then a different PE Header (almost empty) can be used, thus an entirely different set of DataDirectories can be used.
 
 
-> ![//pics/lfanew_relocSCHEMA.png](//pics/lfanew_relocSCHEMA.png)
+> ![/pics/lfanew_relocSCHEMA.png](/pics/lfanew_relocSCHEMA.png)
     * `lfanew_relocW7.exe` implements such a trick:
-> ![//pics/lfanew_reloc.png](//pics/lfanew_reloc.png)
+> ![/pics/lfanew_reloc.png](/pics/lfanew_reloc.png)
 
   * combining a relocation type 4 on top of a relocation type 9 (to turn it into a type 10 under Windows 8) gives a different loader behavior under Windows XP, 7 and 8. `relocOSdet.exe` implements such a mechanism:
 ```
@@ -1280,24 +1280,24 @@ tls:
       * [CoST](x86oddities.md) uses this technique
     * an incorrect entry in the list doesn't trigger a visible error
       * `tls_obfuscation.exe` has many fake TLS callback entries to disrupt disassembly
-> > > ![//pics/PE_tls_obfuscation.png](//pics/PE_tls_obfuscation.png)
+> > > ![/pics/PE_tls_obfuscation.png](/pics/PE_tls_obfuscation.png)
   * like the entrypoint value, a callback VA is blindly called. It can be:
     * outside the PE, in a known in advance address
     * pointing an Import Address Table entry, which means an API will be called with ImageBase as parameter.
       * `tls_import.exe` executes `mz.exe` via a call to WinExec through a TLS callback in its IAT.
-> > > ![//pics/PE_tls_import.png](//pics/PE_tls_import.png)
+> > > ![/pics/PE_tls_import.png](/pics/PE_tls_import.png)
   * under XP, TLS are only executed with staticly loaded DLL, not dynamicly loaded ones.
   * on XP, TLS are executed twice, on process start and process termination. Thus, code **is** executed even after a call to ExitProcess.
 
 > This is true even under Windows 7, however libraries such as user32.dll might be already unloaded, preventing code using it to work normally.
   * TLS callbacks are not executed on thread start if no DLL importing kernel32 is imported. Thus, only execution on thread stop if kernel32 is the only import.
     * `tls_k32` only has imports to kernel32, and a TLS that is ignored on thread start and used on thread stop, while the EntryPoint code is meaningless.
-> > > ![//pics/PE_tls_k32.png](//pics/PE_tls_k32.png)
+> > > ![/pics/PE_tls_k32.png](/pics/PE_tls_k32.png)
     * this behavior might be altered if the OS or debugger is loading an extra DLL.
   * TLS callbacks' list is updated at each callback execution. If a TLS or the EntryPoint code add or remove an entry, it will be taken into consideration
     * `tls_onthefly`'s first TLS adds a second one on the list that will be executed directly after the first one is over
 
-> > ![//pics/PE_tls_onthefly.png](//pics/PE_tls_onthefly.png)
+> > ![/pics/PE_tls_onthefly.png](/pics/PE_tls_onthefly.png)
 ```
 tls:
 ...
@@ -1311,7 +1311,7 @@ tls2:
   * if a callback calls ExitProcess, the EntryPoint won't be called, however the callback will be executed after the ExitProcess call
     * `tls_exiting.exe` contains an exiting TLS callback, preventing the EntryPoint code to be ever called.
     * `tls_noEP.exe` contains no EntryPoint, its callback calls ExitProcess, then the first callback is called again.
-> > ![//pics/PE_tls_noep.png](//pics/PE_tls_noep.png)
+> > ![/pics/PE_tls_noep.png](/pics/PE_tls_noep.png)
 ```
 ...
     at IMAGE_OPTIONAL_HEADER32.AddressOfEntryPoint,       dd 0 - IMAGEBASE
@@ -1330,7 +1330,7 @@ tls2:
 
   * TLS AddressOfIndex is cleared on loading. Thus, it can be used to modify code execution.
     * `tls_aoi` patches the operand of a looping jump by pointing AddressOfIndex to it.
-> > ![//pics/PE_tls_aoi.png](//pics/PE_tls_aoi.png)
+> > ![/pics/PE_tls_aoi.png](/pics/PE_tls_aoi.png)
 ```
 AddressOfIndex equ $ + 1
     jmp long $
@@ -1380,7 +1380,7 @@ HandlerTable:
 ### Bound imports
   * are a shortcut structure to hardcode some imports values in advance, to make import values faster
 
-> ![//pics/PE_boundexports.png](//pics/PE_boundexports.png)
+> ![/pics/PE_boundexports.png](/pics/PE_boundexports.png)
   * all the loader does is take a filename, compare the timestamp of the file and the one included in the bound imports table, then use the VA directly as import if they match.
     * `dllbound-ld.exe` loads and execute 'dllbound.dll' via bound imports.
 ```
@@ -1423,7 +1423,7 @@ bounddll db 'dllbound2.dll', 0 ; hijacking DLL name
 ### Import table
   * the RVA **and** the Size required to be set on a low alignment PE to make the import table writeable, under XP.
     * `nosectionXP.exe` needs an IAT to make its imports writeable
-> > ![//pics/PE_nosectionXP.png](//pics/PE_nosectionXP.png)
+> > ![/pics/PE_nosectionXP.png](/pics/PE_nosectionXP.png)
 
 ### delay imports
   * is a rip-off, a fake structure.
@@ -1431,7 +1431,7 @@ bounddll db 'dllbound2.dll', 0 ; hijacking DLL name
   * is just a trampoline added by the compiler to load imports and DLL on request,
 > > with a 'frontend' in the data directories, with a structure similar to standard imports (adress table + name table) so that external tools can still indicate that imports calls are present.
     * `delayimports.exe` has working delay imports (displayed by other tools):
-> > ![//pics/PE_delayimports.png](//pics/PE_delayimports.png)
+> > ![/pics/PE_delayimports.png](/pics/PE_delayimports.png)
 ```
 ...
 at IMAGE_DATA_DIRECTORY_16.DelayImportsVA, dd delay_imports - IMAGEBASE
@@ -1454,7 +1454,7 @@ __imp__printf:
   * the information in the header is not required to make delay import works, are they are extra code added **in** the file by the compiler.
     * Erasing the data directory VA from a standard file with delay imports will not disturb its execution
     * `delaycorrupt.exe` has the same structure as `delayimports.exe`, but the descriptors are empty.
-> > ![//pics/PE_delaycorrupt.png](//pics/PE_delaycorrupt.png)
+> > ![/pics/PE_delaycorrupt.png](/pics/PE_delaycorrupt.png)
 ```
 ...
 delay_imports:
@@ -1479,7 +1479,7 @@ iend
 ### Misc\_VirtualSize
   * `bigsec` has a section with a virtual size of 0x10001000 (and executes code at the bottom of it).
 
-> ![//pics/PE_bigsec.png](//pics/PE_bigsec.png)
+> ![/pics/PE_bigsec.png](/pics/PE_bigsec.png)
 ```
 ...
 extravirtualspace equ 010000h
@@ -1523,14 +1523,14 @@ iend
 ```
   * sections don't have to be virtually contiguous
     * `virtgap` introduces a gap of 10000000h between 2 sections.
-> > ![//pics/PE_virtgap.png](//pics/PE_virtgap.png)
+> > ![/pics/PE_virtgap.png](/pics/PE_virtgap.png)
 
 ### SizeOfRawData
   * with standard alignments, sections can be physically empty.
   * the last section doesn't have to be physically aligned in size, cf `truncatedlast.exe`
   * if bigger than virtual size, then virtual size is taken.
     * `bigSoRD.exe` has an inflated section
-> > ![//pics/PE_bigsord.png](//pics/PE_bigsord.png)
+> > ![/pics/PE_bigsord.png](/pics/PE_bigsord.png)
 ```
       at IMAGE_SECTION_HEADER.SizeOfRawData,    dd 1 * FILEALIGN + 0ffff0000h
 ```
@@ -1538,7 +1538,7 @@ iend
 ### PointerToRawData
   * sections can be physically overlapping.
     * dupsec has 2 identical sections (besides the VirtualAddress)
-> > ![//pics/PE_dupsec.png](//pics/PE_dupsec.png)
+> > ![/pics/PE_dupsec.png](/pics/PE_dupsec.png)
 ```
 SectionHeader:
 istruc IMAGE_SECTION_HEADER
@@ -1559,13 +1559,13 @@ iend
   * if a section starts at offset 0, it's invalid.
   * if a section's physical start is lower than 200h (the lower limit for standard alignment), it is rounded down to 0. Thus, it's a legitimate way to map the header.
     * `duphead.exe` maps the header in a section via rounding down it's physical start:
-> > ![//pics/PE_duphead.png](//pics/PE_duphead.png)
+> > ![/pics/PE_duphead.png](/pics/PE_duphead.png)
 ```
     at IMAGE_SECTION_HEADER.PointerToRawData, dd 1ffh ; upper limit of the down-rounding trick
 ```
   * sections can be in wrong order physically
     * `shuffledsect.exe` has sections in a wrong physical order.
-> > ![//pics/PE_shuffled.png](//pics/PE_shuffled.png)
+> > ![/pics/PE_shuffled.png](/pics/PE_shuffled.png)
 ```
 SectionHeader:
 istruc IMAGE_SECTION_HEADER
@@ -1583,7 +1583,7 @@ istruc IMAGE_SECTION_HEADER
 ```
   * sections can leave a physically unused space in the PE
     * `slackspace.exe` has 2 section leaving an unused physical space in between
-> > ![//pics/PE_slackspace.png](//pics/PE_slackspace.png)
+> > ![/pics/PE_slackspace.png](/pics/PE_slackspace.png)
 ```
 ...
 SectionHeader:
@@ -1603,7 +1603,7 @@ istruc IMAGE_SECTION_HEADER
 ```
   * the physically-last section defines the appended data. However, it's easy to 'hide' appended data by either:
     * adding a fake extra section (even physically one byte), such as in `hiddenappdata1` (creating some slackspace)
-> > > ![//pics/PE_hiddenappdata1.png](//pics/PE_hiddenappdata1.png)
+> > > ![/pics/PE_hiddenappdata1.png](/pics/PE_hiddenappdata1.png)
     * enlarging the physically-last section, such as in `hiddenappdata2`
 
 ##### PointerToRelocations/PointerToLinenumbers/NumberOfRelocations/NumberOfLinenumbers
@@ -1616,7 +1616,7 @@ istruc IMAGE_SECTION_HEADER
 ## 64b
 a 64b PE (PE32+) is like a 32b PE, except that the FILE HEADER's Machine and the OPTIONAL HEADER's Magic have AMD specific values, and the Imports's INT, as well as the ImageBase, and the Stack and Heap info are QWORD (which drops a few fields from the Optional header as a consequence
 
-![//pics/PE_normal64.png](//pics/PE_normal64.png)
+![/pics/PE_normal64.png](/pics/PE_normal64.png)
 
 ```
 ...
@@ -1641,19 +1641,19 @@ kernel32.dll_hintnames:
 the minimal size for a PE is:
   * 97 bytes, under XP: `tinyXP`. In this case, the OptionalHeader is truncated.
 
-> ![//pics/PE_tinyXP.png](//pics/PE_tinyXP.png)
+> ![/pics/PE_tinyXP.png](/pics/PE_tinyXP.png)
     * the same rule applies to drivers
-> > > ![//pics/PE_tinydrvxp.png](//pics/PE_tinydrvxp.png)
+> > > ![/pics/PE_tinydrvxp.png](/pics/PE_tinydrvxp.png)
     * and DLLs: `tinydllXP`
   * 252 bytes, under Vista/Windows 7 (the same as under XP, with null padding): `tinyW7` - as the OS now enforces a minimum of physical space after the start of the OptionalHeader.
   * 268 bytes, under Vista/Windows 7 (same again, just null bytes to get the required size, but the same elements as `tinyXP`)
     * in 32b, `tinyW7_3264`
     * in 64b, `tinyW7x64`
-> > > ![//pics/PE_tinw7x64.png](//pics/PE_tinw7x64.png)
+> > > ![/pics/PE_tinw7x64.png](/pics/PE_tinw7x64.png)
 
 > so, 268 bytes is the smallest size for a universal tiny PE.
 
-> ![//pics/PE_tiny.png](//pics/PE_tiny.png)
+> ![/pics/PE_tiny.png](/pics/PE_tiny.png)
 
 
 ---
@@ -1666,7 +1666,7 @@ the minimal size for a PE is:
   * the first checks of the PE are done on file. then the file is loaded in memory. then imports are resolved, from the image in memory.
   * by extending the header until the first SectionAlignment, it's possible to have the first section overlapping the header partially.
 > thus, the actual data directories used for imports resolving will not be the contiguous ones on the disk.
-> > ![//pics/PE_foldedhdr.png](//pics/PE_foldedhdr.png)
+> > ![/pics/PE_foldedhdr.png](/pics/PE_foldedhdr.png)
 ```c
 
 ```
@@ -1702,7 +1702,7 @@ dd 6000100Fh,0F0010009h
 
 ## PE + PDF + ZIP
 
-> ![//pics/PE_pdf_zip.png](//pics/PE_pdf_zip.png)
+> ![/pics/PE_pdf_zip.png](/pics/PE_pdf_zip.png)
 
   * PDF in/and ZIP:
     * PDF documents don't need to have their signature starting at offset 0
@@ -1751,7 +1751,7 @@ File formats should have enforce their signature at offset 0.
   * by putting the PE header further in the file and only using printable characters in between,
 > `quine.exe` has its own source directly accessible via the _type_ command.
 > after the source, an EOF character is inserted.
-> > ![//pics/PE_quine.png](//pics/PE_quine.png)
+> > ![/pics/PE_quine.png](/pics/PE_quine.png)
 ```
 db 'MZ'
 align 3bh, db 0dh
@@ -1801,7 +1801,7 @@ AddressOfIndex:
 ...
 ```
 
-![//pics/PE_tlsaoidet_w7.png](//pics/PE_tlsaoidet_w7.png) ![//pics/PE_tlsaoidet_xp.png](//pics/PE_tlsaoidet_xp.png)
+![/pics/PE_tlsaoidet_w7.png](/pics/PE_tlsaoidet_w7.png) ![/pics/PE_tlsaoidet_xp.png](/pics/PE_tlsaoidet_xp.png)
 
 ### manyimportsW7
   * this W7-only binary use the TLS AoI trick to clean its imports. On disk, the import table is full of bogus descriptors, which will be ignored on loading
@@ -1816,7 +1816,7 @@ dd fake_imports - IMAGEBASE + i * 4
 ...
 ```
 
-![//pics/PE_manyimportsW7.png](//pics/PE_manyimportsW7.png)
+![/pics/PE_manyimportsW7.png](/pics/PE_manyimportsW7.png)
 
 ### no0code
   * by using a similar trick as in quine to make a printable DOS header, and relocating the NT HEADERS far enough so that e\_lfanew contains no null char, no0code contains no null byte before the code start.
@@ -1842,16 +1842,16 @@ some specific cases require PE files with less elements than otherwise mentioned
 ### Data Files
 loading a file via LoadLibraryEx with LOAD\_LIBRARY\_AS\_DATAFILE needs a PE file with only a very few defined elements: not even the Subsystem or the Machine needs to be defined for such a ''library''.
   * `d_tiny.dll` is a 61 bytes PE with only 3 defined elements
-> > ![//pics/PE_tiny_dpe.png](//pics/PE_tiny_dpe.png)
+> > ![/pics/PE_tiny_dpe.png](/pics/PE_tiny_dpe.png)
 
 yet even if nothing is defined, its code can still be ran. This allows us to make a non-null PE with code.
   * `d_nonnull.dll` is a data PE with executed code and no null character
-> > ![//pics/PE_nonnull_dpe.png](//pics/PE_nonnull_dpe.png)
+> > ![/pics/PE_nonnull_dpe.png](/pics/PE_nonnull_dpe.png)
 
 ### resources
 A standard use for code-less PEs is to store resources. In this case, more fields are required (Machine, SizeOfOptionalHeader, SizeOfHeaders), but most fields can contain bogus values.
   * `d_resource.dll` is a PE with a lot of corrupted fields yet correct and usable resources
-> > ![//pics/PE_resourcedPE.png](//pics/PE_resourcedPE.png)
+> > ![/pics/PE_resourcedPE.png](/pics/PE_resourcedPE.png)
 
 
 ---
